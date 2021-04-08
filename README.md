@@ -28,7 +28,7 @@
 
 * 모델(Model), 템플릿(Template), 뷰(View) 
 
-  * <img src="D:\Computer_Science\Study\Django\Django\write\Day 1\MTV 패턴.png" alt="MTV 패턴" style="zoom:80%;" />
+  * ![MTV 패턴](https://user-images.githubusercontent.com/72541544/114030137-33c54180-98b5-11eb-88ee-79529ae1058a.png)
 
   * 사진 주소 : [초보자를 위한 장고 Django 뿌시기🔥 - 구름EDU (goorm.io)](https://edu.goorm.io/lecture/16377/초보자를-위한-장고-django-뿌시기)
 
@@ -69,7 +69,7 @@
     * 컬럼, 필드, 애트리뷰트 : 특정 모델의 속성들
     * 모델의 컬럼마다 데이터 타입이 있다.
     * 데이터 타입(자료형) : 프로그래밍 언어에서 실수치, 정수, 불린 자료형 따위의 여러 종류의 데이터를 식별하는 분류
-    * ![UserTable](D:\Computer_Science\Study\Django\Django\write\Day 1\UserTable.png)
+    * ![UserTable](https://user-images.githubusercontent.com/72541544/114030146-34f66e80-98b5-11eb-8344-7184caa0807c.png)
     * 사진 주소 : [초보자를 위한 장고 Django 뿌시기🔥 - 구름EDU (goorm.io)](https://edu.goorm.io/lecture/16377/초보자를-위한-장고-django-뿌시기)
     * User 내용들을 migrate라는 과정을 통해 DB에 User Table을 생성한다.
       * Table : Excel 표와 비슷하다.
