@@ -28,7 +28,7 @@
 
 * 모델(Model), 템플릿(Template), 뷰(View) 
 
-  * ![MTV 패턴](https://user-images.githubusercontent.com/72541544/114030137-33c54180-98b5-11eb-88ee-79529ae1058a.png)
+  * ![MTV 패턴](https://user-images.githubusercontent.com/72541544/114030603-8999e980-98b5-11eb-8d3b-2b1633333adf.png)
 
   * 사진 주소 : [초보자를 위한 장고 Django 뿌시기🔥 - 구름EDU (goorm.io)](https://edu.goorm.io/lecture/16377/초보자를-위한-장고-django-뿌시기)
 
