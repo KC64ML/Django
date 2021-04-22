@@ -238,7 +238,7 @@
     * 가장 중요한 것
       * 현재 최상위 디렉터리(프로젝트) -> 현재 최상위 디렉터리(프로젝트)-> setting.py
       * INSTALLED_APPS에 현재 crudapp이 설치되었다는 것을 알려줘야 한다.
-      * ![INSTALLED_APPS](D:\Computer_Science\Study\Django\Django\write\Day 3\사진\INSTALLED_APPS.png)
+      * ![INSTALLED_APPS](https://user-images.githubusercontent.com/72541544/115669143-ec45b780-a382-11eb-98cd-b9664395f6cc.png)
   * urls.py
     * app 경로설정
   * wsgi.py
@@ -256,7 +256,7 @@
 
   * 최상위 프로젝트에서 python manage.py startapp app이름
     * 이렇게 할시, app이 만들어지고 안에는 밑과 같이 py가 생성됨
-    * ![startappname](D:\Computer_Science\Study\Django\Django\write\Day 3\사진\startappname.png)
+    * ![startappname](https://user-images.githubusercontent.com/72541544/115669156-eea81180-a382-11eb-8269-b3ccc3da9af4.png)
 
 * app 디렉터리
 
@@ -266,7 +266,7 @@
 
   * models.py : 모델을 표현하는 곳이다.
 
-    * ![Postclass](D:\Computer_Science\Study\Django\Django\write\Day 3\사진\Postclass.png)
+    * ![Postclass](https://user-images.githubusercontent.com/72541544/115669154-eea81180-a382-11eb-9bf7-c75a3245f052.png)
 
     * ```python
       from django.db import models
@@ -310,11 +310,11 @@
 
     * python manage.py makemigrations로 주문서를 만든다.
 
-    * ![app 생성](D:\Computer_Science\Study\Django\Django\write\Day 3\사진\app 생성.png)
+    * ![app 생성](https://user-images.githubusercontent.com/72541544/115669138-ebad2100-a382-11eb-8894-f6e6aab8e13d.png)
 
     * ![migration생성](D:\Computer_Science\Study\Django\Django\write\Day 3\사진\migration생성.png)
 
-    * ![migration init](D:\Computer_Science\Study\Django\Django\write\Day 3\사진\migration init.png)
+    * ![migration init](https://user-images.githubusercontent.com/72541544/115669144-ecde4e00-a382-11eb-88d1-cabd16af3b28.png)
 
     * id : 기본키(primary key), 고유 식별 가능한 정보
 
@@ -326,7 +326,7 @@
 
     * python manage.py migrate로 주문서 내역대로 테이블을 생성한다.
 
-    * ![주문서](D:\Computer_Science\Study\Django\Django\write\Day 3\사진\주문서.png)
+    * ![주문서](https://user-images.githubusercontent.com/72541544/115669159-ef40a800-a382-11eb-8b8f-25cff1983658.png)
 
     * ``` database
       python manage.py shell : shell에 진입한다.(이후)
@@ -355,12 +355,11 @@
       - 쉘에서 나올 때 사용
       ```
 
-    * ![post create](D:\Computer_Science\Study\Django\Django\write\Day 3\사진\post create.png)
+    * ![post create](https://user-images.githubusercontent.com/72541544/115669149-ed76e480-a382-11eb-8d04-7a4767333377.png)
 
       * <Post: Post object (1)> : 1이라는 id 값을 갖는 게시글의 객체라는 뜻이다.
 
-    * ![Post object 조회](D:\Computer_Science\Study\Django\Django\write\Day 3\사진\Post object 조회.png)
-
+    * ![Post object 조회](https://user-images.githubusercontent.com/72541544/115669150-ee0f7b00-a382-11eb-8ab6-4e584d55e7da.png)
       * Post.objects.all() : 모든 host 테이블 안에 있는 객체들을 불러온다.
       * <QuerySet [<Post: Post object (1)>]> : QuerySet Box안에서 Post 객체 첫 번째 값을 불러온다.
 
