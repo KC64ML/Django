@@ -88,15 +88,15 @@
 # vscode 설정
 
 * 먼저 git Bash를 TERMINAL에 추가한다.
-* ![Terminal](D:\Computer_Science\Study\Django\Django\write\Day 2\사진\Terminal.png)
+* ![Terminal](https://user-images.githubusercontent.com/72541544/115647713-4a60a380-a35f-11eb-90fa-b9e1886acc54.png)
   * vscode 첫 시작시 TERMINAL 기본 쉘로 Command Prompt, PowerShell만 존재할 것이다.
-  * ![terminal2](D:\Computer_Science\Study\Django\Django\write\Day 2\사진\terminal2.png)
+  * ![terminal2](https://user-images.githubusercontent.com/72541544/115647732-50568480-a35f-11eb-8484-e2d8537f1eff.png)
 * ctrl + shift + '(물결) 
   * bash 터미널 창이 뜬다.
-  * ![bash](D:\Computer_Science\Study\Django\Django\write\Day 2\사진\bash.png)
+  * ![bash](https://user-images.githubusercontent.com/72541544/115647871-8a278b00-a35f-11eb-9b8f-03f5b7782f73.png)
 * vscode EXPLORER에 디렉터리를 OPEN 한다.
 * 현재 TERMINAL에 git bash를 열어준다. (alt + shift + `)
-* ![터미널](D:\Computer_Science\Study\Django\Django\write\Day 2\사진\터미널.png)
+* ![터미널](https://user-images.githubusercontent.com/72541544/115647726-4f255780-a35f-11eb-802b-af8eb20c6b44.png)
 
 * 위 자료는 웹 주소 : https://integer-ji.tistory.com/81?category=745989 에서 가져온 자료입니다.
 
@@ -123,7 +123,7 @@
 
   * source myvenv(가상 환경 이름)/Scripts/activate
 
-  * ![source](D:\Computer_Science\Study\Django\Django\write\Day 2\사진\source.png)
+  * ![source](https://user-images.githubusercontent.com/72541544/115647897-91e72f80-a35f-11eb-9f4b-93ec90cd0c3f.png)
 
     * 정상 실행될 시 myvenv(가상 환경 이름) 출력
       * 이제부터 myvenv 가상환경 안에 있는 것을 말하는 것이다.
@@ -154,12 +154,12 @@
     * 특정 버전의 django를 다운로드 하기 위해서는
       * pip install django==2.x.x 식으로 입력하면된다.
 
-* ![pip install](D:\Computer_Science\Study\Django\Django\write\Day 2\사진\pip install.png)
+* ![pip install](https://user-images.githubusercontent.com/72541544/115647998-c0fda100-a35f-11eb-9f95-962616f68683.png)
 
   * 만약 설치 완료 후 업그레이드를 요구한다면
     * python -m pip install --upgrade pip를 입력해주면 된다.
 
-* ![python upgrade](D:\Computer_Science\Study\Django\Django\write\Day 2\사진\python upgrade.png)
+* ![python upgrade](https://user-images.githubusercontent.com/72541544/115648003-c1963780-a35f-11eb-93b5-b979262650cb.png)
 
 
 
@@ -180,33 +180,33 @@
       * python manage.py runserver 8080
     * 서버 IP 바꾸기
       * python manage.py runserver 0:8000
-  * ![runserver](D:\Computer_Science\Study\Django\Django\write\Day 2\사진2\runserver.png)
-  * ![django internet](D:\Computer_Science\Study\Django\Django\write\Day 2\사진2\django internet.png)
+  * ![runserver](https://user-images.githubusercontent.com/72541544/115647760-577d9280-a35f-11eb-8666-6129aef0e5aa.png)
+  * ![django internet](https://user-images.githubusercontent.com/72541544/115647757-56e4fc00-a35f-11eb-81bb-449707281a3c.png)
 * app 만들기
   * python manage.py startapp crudapp
     * crudapp 앱 생성
-    * ![startapp](D:\Computer_Science\Study\Django\Django\write\Day 2\사진2\startapp.png)
+    * ![startapp](https://user-images.githubusercontent.com/72541544/115647751-55b3cf00-a35f-11eb-9b98-7ccb1a58a74c.png)
 * project와 app 이어주기
   * INSTALLED_APPS = [~]에 'crudapp.apps.CrudappConfig', 를 추가해준다.
-  * ![setting](D:\Computer_Science\Study\Django\Django\write\Day 2\사진2\setting.png)
+  * ![setting](https://user-images.githubusercontent.com/72541544/115647763-58162900-a35f-11eb-9315-10b8e5e63270.png)
 * app에 templates 폴더 추가, 폴더 안에 home.html 만들기
   * 이때, MTV 패턴 중 T, Template 폴더가 생성되며 안에는 html이 들어간다. 
-  * ![template](D:\Computer_Science\Study\Django\Django\write\Day 2\사진2\template.png)
+  * ![template](https://user-images.githubusercontent.com/72541544/115647752-564c6580-a35f-11eb-87d4-e1742785d8b2.png)
 * view.py에 home란 이름의 함수 만들기
   * View를 메서드로 구현한 것이 view.py이며 웹이나 Database에서 온 요청을 처리한다.
   * home는 요청이 들어오면 home.html을 실행
-  * ![viewpy](D:\Computer_Science\Study\Django\Django\write\Day 2\사진2\viewpy.png)
+  * ![viewpy](https://user-images.githubusercontent.com/72541544/115647756-56e4fc00-a35f-11eb-9849-57929827b8fa.png)
 * project의 urls.py와 app의 views.py 연결하기
   * from crudapp import views
   * path(' ',views.home, name='home'),
     * 이때 템플릿 처리를 한 후 html로 된 응답 데이터를 웹 클라이언트로 반환한다.
   * app과 project는 다른 디렉터리에 있어 서로 연결한다.
-  * ![urlspy](D:\Computer_Science\Study\Django\Django\write\Day 2\사진2\urlspy.png)
+  * ![urlspy](https://user-images.githubusercontent.com/72541544/115647755-564c6580-a35f-11eb-8ecd-b8474e975e01.png)
 * 이제 입력한 내용들을 확인하기 위해 python manage.py runserver 입력한다.
   *  http://127.0.0.1:8000/ 클릭시 출력내용 확인가능
-  * ![runserver2](D:\Computer_Science\Study\Django\Django\write\Day 2\사진2\runserver2.png)
+  * ![runserver2](https://user-images.githubusercontent.com/72541544/115647761-58162900-a35f-11eb-94e4-65798a70f391.png)
 * 결과
-  * ![result](D:\Computer_Science\Study\Django\Django\write\Day 2\사진2\result.png)
+  * ![result](https://user-images.githubusercontent.com/72541544/115647759-577d9280-a35f-11eb-8f92-b87b9a363f20.png)
 * 지금까지 한 내용은 MVT 패턴 중 View, Template을 사용하였다.
 * View 같은 경우, views.py 메서드로 구현되며 웹이나 Database에서 온 요청을 처리한다.
   * 최종으로 데이터를 html로 변환하기 위해 Template 처리를 한 후 html로 응답 데이터를 웹 클라이언트로 반환한다.
