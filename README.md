@@ -385,19 +385,19 @@
 
 * python manage.py createsuperuser
 
-* ![SuperUser  생성](D:\Computer_Science\Study\Django\Django\write\Day 3\사진3\SuperUser  생성.png)
+* ![SuperUser  생성](https://user-images.githubusercontent.com/72541544/115699599-bdd6d500-a3a0-11eb-823e-05cf1896aceb.png)
 
 * 가상장치를 실행시킨 후 project 디렉터리에 들어와서 runserver를 실행시켜준다.
 
-* ![runserver 실행](D:\Computer_Science\Study\Django\Django\write\Day 3\사진3\runserver 실행.png)
+* ![runserver 실행](https://user-images.githubusercontent.com/72541544/115699598-bdd6d500-a3a0-11eb-8717-157435d019b1.png)
 
 * 다음 127.0.0.1:8000에서 /admin/을 추가한 후 해당 name과 password로 로그인한다.
 
-* ![admin](D:\Computer_Science\Study\Django\Django\write\Day 3\사진3\admin.png)
+* ![admin](https://user-images.githubusercontent.com/72541544/115699601-be6f6b80-a3a0-11eb-8584-5451c1e9af79.png)
 
 * Django는 이미 CRUD가 구성되어 있다.
 
-* ![CRUD](D:\Computer_Science\Study\Django\Django\write\Day 3\사진3\CRUD.png)
+* ![CRUD](https://user-images.githubusercontent.com/72541544/115699586-bc0d1180-a3a0-11eb-8cc8-1ee233cc862c.png)
 
 * 만든 모델들은 admin에서 관리를 한다.
 
@@ -440,9 +440,9 @@
 
 * 입력 후 확인 결과
 
-* ![Django administration](D:\Computer_Science\Study\Django\Django\write\Day 3\사진3\Django administration.png)
+* ![Django administration](https://user-images.githubusercontent.com/72541544/115699596-bd3e3e80-a3a0-11eb-8bac-d1d1d23b48a8.png)
 
-* ![Django admin](D:\Computer_Science\Study\Django\Django\write\Day 3\사진3\Django admin.png)
+* ![Django admin](https://user-images.githubusercontent.com/72541544/115699593-bd3e3e80-a3a0-11eb-9d8b-cdddcbb1dd1a.png)
 
 * 현재 데코레이터로 함수, 클래스를 꾸며준 후 결과이다.
 
@@ -451,12 +451,6 @@
 * 또한, 입력한 list_display, search_fields를 통해 컬럼들을 보여주며, 검색이 가능하다.
 
 * list_filter, list_display_links 및 list관련 변수에 대해 알아봐야 한다.
-
-
-
-
-
-
 
 
 
