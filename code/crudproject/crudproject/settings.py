@@ -74,6 +74,8 @@ WSGI_APPLICATION = 'crudproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+
+# 서비스 이용하는데에 현재 DATABASE는 적합하지 않다.
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
