@@ -312,7 +312,7 @@
 
     * ![app 생성](https://user-images.githubusercontent.com/72541544/115669138-ebad2100-a382-11eb-8894-f6e6aab8e13d.png)
 
-    * ![migration생성](D:\Computer_Science\Study\Django\Django\write\Day 3\사진\migration생성.png)
+    * ![migration생성](https://user-images.githubusercontent.com/72541544/115669148-ed76e480-a382-11eb-847b-4f78f082efb8.png)
 
     * ![migration init](https://user-images.githubusercontent.com/72541544/115669144-ecde4e00-a382-11eb-88d1-cabd16af3b28.png)
 
