@@ -456,6 +456,11 @@
 
 #### 웹 관련 Django는 여기까지
 #### 애플리케이션으로
+* Web과 app에서의 Django
+![django Rest api1](https://user-images.githubusercontent.com/72541544/115875396-20eb6900-a480-11eb-8c98-b6fe4131ec32.png)
+
+
+
 
 # REST API
 
@@ -473,7 +478,7 @@
     * 직렬화된 클래스로서, 사용자의 DB안에 사용자 프로필 사진, 이메일, 이름, 성별이 있다고 가정하면 사용자 모델 인스턴스를 JSON 형태 또는 Dictionary 형태로 직렬화 할 수 있다.
     * ex)로 아래와 같은 User가 있다고 가정한다.
     * DRF의 serializer를 통해 모델 인스턴스를 직렬화 할 수 있다.
-    * ![DRF serializer](D:\Computer_Science\Study\Django\Django\write\Day 3\사진4\DRF serializer.png)
+    * ![DRF serializer](https://user-images.githubusercontent.com/72541544/115875378-1d57e200-a480-11eb-8d40-b066162373aa.png)
     * 사용자 정보를 열람하는 URL : /serializer/user/<user id>/
     * View에서는 user_id의 해당하는 모델 인스턴스의 정보를 리턴한다.
     * 이럴 경우, /serializer/user/1/이라는 URL로 요청했을 때, user_id가 1인 사용자의 정보를 JSON 형태로 응답받을 수 있다.
@@ -481,9 +486,9 @@
     * 이러한 기능을 하는 Serializer를 ModelSerializer이라고 부른다.
   * DRF 실제 설치
     * pip install djangorestframework
-    * ![djangorestframework 설치](D:\Computer_Science\Study\Django\Django\write\Day 3\사진4\djangorestframework 설치.png)
+    * ![djangorestframework 설치](https://user-images.githubusercontent.com/72541544/115875374-1c26b500-a480-11eb-851e-d0b04c8cb24a.png)
     * rest framework 추가
-    * ![rest framework app 추가](D:\Computer_Science\Study\Django\Django\write\Day 3\사진4\rest framework app 추가.png)
+    * ![rest framework app 추가](https://user-images.githubusercontent.com/72541544/115875379-1d57e200-a480-11eb-99ff-0f3dc3757886.png)
 
 
 
@@ -491,7 +496,7 @@
   * 모바일에서 장고를 사용하는 이유는
     * 프론트엔드와 백엔드간의 REST 기반의 통신 아키텍처로 완전한 Decoupling을 용이하게 할 수 있어 사용한다.
     * Decoupling : app을 다시 배치하지 않고도 parameters(매개 변수)를 변경할 수 있게 설정을 구성해준다. 
-  * ![django json api](D:\Computer_Science\Study\Django\Django\write\Day 3\사진4\django json api.png)
+  * ![django json api](https://user-images.githubusercontent.com/72541544/115875385-1e890f00-a480-11eb-9627-b33cc0e0269b.png)
     * 안드로이드에서는 Http API를 요청하고, Backend에서는 Json으로 응답한다.
     * Android에서는 Component Renderer, View Controller가 필요하고
     * BackEnd에서는 API View, ORM, Serializer이 필요하다. 
@@ -639,17 +644,7 @@ REST_FRAMEWORK = {
 python manage.py runserver
 ```
 
-![Api Root](D:\Computer_Science\Study\Django\Django\write\Day 3\사진5\Api Root.png)
-
-
-
-
-
-참고 자료 : https://jong-seok-ap.tistory.com/32
-
-참고 자료 : https://butter-shower.tistory.com/50
-
-참고 자료 : https://butter-shower.tistory.com/52
+![Api Root](https://user-images.githubusercontent.com/72541544/115875382-1df07880-a480-11eb-82ad-716354b4ac2b.png)
 
 
 
@@ -657,6 +652,12 @@ python manage.py runserver
 
 
 
+
+[참고 자료] : https://jong-seok-ap.tistory.com/32
+
+[참고 자료] : https://butter-shower.tistory.com/50
+
+[참고 자료] : https://butter-shower.tistory.com/52
 
 [참고 자료] : https://m.blog.naver.com/complusblog/221177123238
 
