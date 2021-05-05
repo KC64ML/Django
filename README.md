@@ -672,7 +672,7 @@ python manage.py runserver
 
 ## 처음 만난 오류
 
-![질문내용](D:\Computer_Science\Study\Django\Django\write\Day 5\사진\질문내용.jpg)
+![질문내용](https://user-images.githubusercontent.com/72541544/117118512-cfba6e00-adcb-11eb-8ac5-92f181ea943d.jpg)
 
 * File "D:\ ~ py", line 24, in setup apps.populate(settings.INSTALLED_APPS)
   * apps.populate(settings.INSTALLED_APPS) 설정에서 File "~"을 실행
@@ -683,13 +683,13 @@ python manage.py runserver
 * 이를 추측한다. 위를 보면, IndexError가 발생 다음 윗줄은 app을 만든다.
 * 그 다음으로는  settings.INSTALLED_APPS 설정을 한다.
   * 설정? 이를 확인해본 결과
-  * ![ok](D:\Computer_Science\Study\Django\Django\write\Day 5\사진\ok.png)
+  * ![ok](https://user-images.githubusercontent.com/72541544/117118519-d21cc800-adcb-11eb-9a98-24667a928596.png)
   * 'firststartapp.apps.Firststartappconfig.'
     * '.'처리가 잘못되었다.
   * 그러므로 settings.INSTALLED_APPS에서 잘못된 것이었다.
 
 * django.db.utils.ProgrammingError (1146 ~ 에러 발생시)
-  * ![ProgrammingError](D:\Computer_Science\Study\Django\Django\write\Day 5\사진\ProgrammingError.png)
+  * ![ProgrammingError](https://user-images.githubusercontent.com/72541544/117118527-d2b55e80-adcb-11eb-8f3b-1f5893edd813.png)
   * 이는 migration을 생성하지 않았기에 발생한 에러이다.
 
 
@@ -719,7 +719,7 @@ python manage.py runserver
 * python manage.py inspectdb
 
   * mysql로 부터 어떠한 테이블이 전달되었는지  확인한다.
-  * ![inspectdb](D:\Computer_Science\Study\Django\Django\write\Day 5\사진\inspectdb.png)
+  * ![inspectdb](https://user-images.githubusercontent.com/72541544/117118510-cf21d780-adcb-11eb-85c9-196df4012cea.png)
 
 * models.py
 
@@ -796,9 +796,12 @@ python manage.py runserver
 
 * python manage.py runserver
 
-  * ![실행결과](D:\Computer_Science\Study\Django\Django\write\Day 5\사진\실행결과.png)
+  * ![실행결과](https://user-images.githubusercontent.com/72541544/117118525-d2b55e80-adcb-11eb-8837-da2844365634.png)
   * Get을 눌려서 Login List로 넘어갔을 때
-    * ![login](D:\Computer_Science\Study\Django\Django\write\Day 5\사진\login.png)
+    * ![login](https://user-images.githubusercontent.com/72541544/117118521-d21cc800-adcb-11eb-91da-8352035cd0e1.png)
+
+
+
 
 
 
