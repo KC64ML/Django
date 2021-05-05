@@ -18,9 +18,12 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 from firststartapp import views
+from firststartapp import seralizer
 
 router = routers.DefaultRouter()
-router.register(r'SignUp', views.SignUpViewSet)
+router.register(r'login', views.LoginViewSet)
+# router.register(r'index', seralizer.LoginSerializer)
+
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.

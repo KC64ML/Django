@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'firststartapp.apps.FirststartappConfig.',
+    'firststartapp.apps.FirststartappConfig',
     'rest_framework',
 ]
 
@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'assignment1.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'studydb',  # DB명
+        'NAME': 'DisabledDB',  # DB명
         'USER': 'root',    # DB 계정
-        'PASSWORD': '1234',  # 계정 비밀번호
+        'PASSWORD': 'chang960626',  # 계정 비밀번호
         'HOST': 'localhost',    # 데이터베이스 주소(IP)
         'PORT': '3306',         # 데이터베이스 포트(보통 3306)
         'OPTIONS': {

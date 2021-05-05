@@ -1,10 +1,10 @@
 from rest_framework import viewsets
-from firststartapp.seralizer import SignUpSerializer
-from firststartapp.models import Sign_Up_Modle
+from firststartapp.seralizer import LoginSerializer
+from firststartapp.models import LoginModel
 
 # Create your views here.
 
 
-class SignUpViewSet(viewsets.ModelViewSet):
-    queryset = Sign_Up_Modle.objects.all()
-    serializer_class = SignUpSerializer
+class LoginViewSet(viewsets.ModelViewSet):
+    queryset = LoginModel.objects.all()
+    serializer_class = LoginSerializer
