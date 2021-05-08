@@ -22,7 +22,6 @@ from firststartapp import seralizer
 
 router = routers.DefaultRouter()
 router.register(r'login', views.LoginViewSet)
-# router.register(r'index', seralizer.LoginSerializer)
 
 
 # Wire up our API using automatic URL routing.
