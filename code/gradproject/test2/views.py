@@ -4,9 +4,16 @@ from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
 from .models import Addresses
 from .serializers import AddressesSerializer
+from .models import Addresses
+from rest_framework import viewsets
 from django.contrib.auth import authenticate
 
 # Create your views here.
+
+
+class LoginViewSet(viewsets.ModelViewSet):
+    queryset = Addresses.objects.all()
+    serializer_class = AddressesSerializer
 
 
 @csrf_exempt
@@ -43,8 +50,9 @@ def address(request, pk):
         obj.delete()
         return HttpResponse(status=204)
 
+    # app 로그인
 
-# app 로그인
+
 @csrf_exempt
 def app_login(request):
     if request.method == 'POST':
