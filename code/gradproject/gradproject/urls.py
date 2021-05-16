@@ -1,5 +1,4 @@
 from django.conf.urls import url, include
-# from testapp import views
 from test2 import views
 from django.urls import path
 from django.contrib import admin
@@ -22,9 +21,6 @@ from rest_framework import routers
 # ]
 
 
-# 해결하지 못한 내용
-# schema_view = get_swagger_view(title="My API")
-
 # # test2
 # urlpatterns = [
 #     path('gradproject/', views.address_list),
@@ -37,7 +33,6 @@ from rest_framework import routers
 #     url(r'^$', schema_view),
 # ]
 
-from test2 import views
 
 router = routers.DefaultRouter()
 router.register(r'users', views.LoginViewSet)
@@ -69,10 +64,6 @@ urlpatterns = [
 
 
     path('app_login/', views.app_login),
-    path('gradproject/', views.address_list),
-    path('gradproject/<int:pk>/', views.address),
-    # views.address로 가는데 address에서는 def address(request, pk): 로 받는다.
-    # 그러므로 첫 번째 gradproject 두 번째는 pk로
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

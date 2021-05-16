@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from .models import Addresses
+from .models import LoginModels
 
 
-class AddressesSerializer(serializers.ModelSerializer):
+class LoginSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Addresses
-        fields = ['name', 'phone_number', 'address']
+        model = LoginModels
+        fields = ['username', 'password']

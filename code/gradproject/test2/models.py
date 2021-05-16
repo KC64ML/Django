@@ -3,11 +3,11 @@ from django.db import models
 # Create your models here.
 
 
-class Addresses(models.Model):
-    name = models.CharField(max_length=10)
-    phone_number = models.CharField(max_length=13)
-    address = models.TextField()
-    created = models.DateTimeField(auto_now_add=True)
+class LoginModels(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    username = models.CharField(max_length=45)
+    password = models.CharField(max_length=45)
 
     class Meta:
-        ordering = ['created']
+        managed = False
+        db_table = 'test2_loginmodels'
