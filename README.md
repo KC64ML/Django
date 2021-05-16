@@ -1116,6 +1116,7 @@ python manage.py runserver
     }
     
     SITE_ID = 1
+    ```
 
   * urls.py
 
