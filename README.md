@@ -841,14 +841,14 @@ python manage.py runserver
 # Error
 
 * ERROR 1049 : Unknown database 'Database이름'
-  * ![1234](D:\Computer_Science\Study\Django\Django\write\Day 6\사진\1234.png)
+  * ![1234](https://user-images.githubusercontent.com/72541544/118401636-66770c80-b6a1-11eb-8f1a-a50ea596ec37.png)
   * database 생성 후, django에 적용했을 때 나오는 에러이다.
   * 이 오류는 database가 생성되지 않았다는 이야기다.
     * 이럴 경우 mysql에 접근하여 create Database name; 이름 db를 생성한 후
     * 실행하면 정상으로 돌아간다.
       * 실행 : python manage.py makemigrations
 * ParseError at /gradproject/3/ JSON parse error - Extra data: line 10 column 1 (char 97)
-  * ![error](D:\Computer_Science\Study\Django\Django\write\Day 6\사진\error.png)
+  * ![error](https://user-images.githubusercontent.com/72541544/118401638-67a83980-b6a1-11eb-9176-19be37fbee57.png)
   * 위와 같은 에러일 때는 빨간색 보이는가, 뒤에 //를 잘못 달아서 생긴 오류이다.
 
 
@@ -1001,33 +1001,33 @@ python manage.py runserver
 
 ## HTTP ERROR Code
 
-![http](D:\Computer_Science\Study\Django\Django\write\Day 6\사진\http.png)
+![http](https://user-images.githubusercontent.com/72541544/118401640-68d96680-b6a1-11eb-9aa3-9bc15f15f6e1.png)
 
 # Insomnia에서 사용법
 
 * PUT 예시
-  * ![put](D:\Computer_Science\Study\Django\Django\write\Day 6\사진\put.png)
+  * ![put](https://user-images.githubusercontent.com/72541544/118401643-6971fd00-b6a1-11eb-9950-e6d819b75b6b.png)
   * ~8000/project이름/테이블 번호/
   * PUT하기 위해, 먼저 GET을 이용하여 내역들을 확인한 후
   * MySQL_Workbench를 이용하여 테이블 번호를 확인한다.
 * POST 예시
-  * ![POST](D:\Computer_Science\Study\Django\Django\write\Day 6\사진\POST.png)
+  * ![POST](https://user-images.githubusercontent.com/72541544/118401641-68d96680-b6a1-11eb-938e-309e4585828b.png)
   * ~8000/project이름/ 
   * 입력시 출력이 된다.
   * 입력하기위해 테이블 name과 내용을 넣는다.
 * GET 예시
-  * ![get](D:\Computer_Science\Study\Django\Django\write\Day 6\사진\get.png)
+  * ![get](https://user-images.githubusercontent.com/72541544/118401639-6840d000-b6a1-11eb-8ddb-571984afa7ca.png)
   * ~8000/project이름/
   * 입력시 이전까지 입력한 내용 확인 가능(삭제된 것은 제외)
 * DELETE 예시
-  * ![DELETE](D:\Computer_Science\Study\Django\Django\write\Day 6\사진\DELETE.png)
+  * ![DELETE](https://user-images.githubusercontent.com/72541544/118401637-67a83980-b6a1-11eb-922b-b57eb64e8415.png)
   * ~8000/project이름/테이블 번호
   * 입력한 테이블 번호에 해당하는 테이블을 삭제한다.
 
 # MySQL_Workbench 에서
 
 * django에서 생성한 table을 확인할 때
-  * ![사진2](D:\Computer_Science\Study\Django\Django\write\Day 6\사진\사진2.png)
+  * ![사진2](https://user-images.githubusercontent.com/72541544/118401645-6971fd00-b6a1-11eb-8734-faeee3007308.png)
   * SELECT * FROM database이름.테이블 이름;
 
 
@@ -1160,28 +1160,15 @@ python manage.py runserver
     
     ```
 
-  * 
+  *
+
+
 
 주소 : https://bum752.github.io/posts/django-api-document/
 
 사진 주소  : https://articles09.tistory.com/5?category=708596
 
 사진 주소 : https://youtu.be/KRJRD2Kkf8w
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 [참고 자료] : https://jong-seok-ap.tistory.com/32
 
