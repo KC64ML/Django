@@ -805,18 +805,380 @@ python manage.py runserver
 
 
 
+# 이제부터 Django Android와 연동
+
+# Settings
+
+* debug
+  * debug, false 상태이면 runserver나 이외 설정들이 안됨
+* INSTALLED_APPS
+  * Django는 프로젝트 안에서 APP 단위로 관리하기 때문에
+  * APP 생성시 여기에 추가한다.
+* ROOT_URLCONF
+  * API이 URL 기반으로 호출
+  * .  => \ 경로에 다리
+* DATABASES
+  * INSTALLED_APPS에 설정한 APP들이 자동으로 DB에 생성된다.
+  * ORM 기능 : Table이랑 DB를 만들지 않아도 Django가 migrate 명령을 치는 순간 필요한 데이터를 DB에 만든다.
+* ALLOWED_HOSTS = ['ip 주소']
+  * Django 서버에 접근을 허용하는 호스트 목록
+  * ip 주소 : * 이면 아무나 들어올 수 있다.
+* 외부 접속 할 떄는
+
+  * 0.0.0.0:8000
+* root 주소 : 127.0.0.1
+  * 127.0.0.1/user
+  * user 전체
+* Serializer
+  * data를 json형태로 바꾸어준다.
+* ORM
+  * Object-Relational-Mapping
 
 
 
 
 
+# Error
+
+* ERROR 1049 : Unknown database 'Database이름'
+  * ![1234](https://user-images.githubusercontent.com/72541544/118401636-66770c80-b6a1-11eb-8f1a-a50ea596ec37.png)
+  * database 생성 후, django에 적용했을 때 나오는 에러이다.
+  * 이 오류는 database가 생성되지 않았다는 이야기다.
+    * 이럴 경우 mysql에 접근하여 create Database name; 이름 db를 생성한 후
+    * 실행하면 정상으로 돌아간다.
+      * 실행 : python manage.py makemigrations
+* ParseError at /gradproject/3/ JSON parse error - Extra data: line 10 column 1 (char 97)
+  * ![error](https://user-images.githubusercontent.com/72541544/118401638-67a83980-b6a1-11eb-9176-19be37fbee57.png)
+  * 위와 같은 에러일 때는 빨간색 보이는가, 뒤에 //를 잘못 달아서 생긴 오류이다.
 
 
 
+# Django에서 views.py (CRUD)
+
+* ```python
+  @csrf_exempt
+  def address_list(request):
+      if request.method == 'GET':
+          # 요청한 method의 값이 GET이라면,
+          query_set = Addresses.objects.all()
+          # 모든 객체를 다 읽어와서 query_set에서 넣어준다.
+          serializer = AddressesSerializer(query_set, many=True)
+          # 이 객체를 Serializer 안에 넣으면 Json 형태로 반환이 된다.
+          # serializer에는 Json 형태가 저장된다.
+          return JsonResponse(serializer.data, safe=False)
+      	# 이를 JsonResponse형태로 return 한다. 안에 serializer data가 있다.
+          # return 항상 Response 형태로 반환해야한다.
+  
+      elif request.method == 'POST':
+          # 요청한 method의 값이 POST라면,
+          # POST는 CREATE 기능이기 때문에 만들어야 하는 객체 데이터를 뽑아오기 위해
+          # JSON 파서를 사용한다.
+          data = JSONParser().parse(request)
+          # 파이썬 데이터 형식으로 요청을 파싱한다.
+          serializer = AddressesSerializer(data=data)
+          # 파싱한 데이터를 Serializer에 넣는다.
+          if serializer.is_valid():
+          # is_valid() : 모델, 필드 비교
+          # Serializer에서 선언했던 모델, 필드와 비교해서 일치하면
+              serializer.save()
+          # save()를 통해 객체를 만든다.
+              return JsonResponse(serializer.data, status=201)
+          # serializer.data를 JsonResponse 형태로 return 한다.
+          # 201번은 성공을 한다.
+          return JsonResponse(serializer.errors, status=400)
+      	# error를 JsonResponse 형태로 return 한다. 400번 에러
+          # return은 Response 형태여야 한다.
+      
+      
+  # GET, POST. DELETE, PUT
+  ```
+
+* ```python
+  @csrf_exempt
+  def address(request, pk):
+      obj = Addresses.objects.get(pk=pk)
+      # GET, PUT, DELETE는 하나의 객체를 선택해서 처리하는 로직
+      # 공통적으로 하나를 조회하는 코드
+      # 단건 조회에는 url에 pk번호가 같이 올라와야 하기 때문에
+      # pk값이 들어간다.
+      # pk로 객체를 하나 불러온 다음
+      if request.method == 'GET':
+          serializer = AddressesSerializer(obj)
+          # 데이터를 Serializer에 넣는다.
+          return JsonResponse(serializer.data, safe=False)
+      elif request.method == 'PUT':
+          data = JSONParser().parse(request)
+          # 파이썬 데이터 형식으로 요청을 파싱한다.
+          serializer = AddressesSerializer(obj, data=data)
+          # 선택된 객체와 파싱한 데이터를 Serializer에 넣는다.
+          if serializer.is_valid():
+          # is_valid() : 모델, 필드 비교
+          # Serializer에서 선언했던 모델, 필드와 비교해서 일치하면
+              serializer.save()
+              # save()를 통해 객체를 만든다.
+              return JsonResponse(serializer.data, status=201)
+          	# serializer.data를 JsonResponse 형태로 return 한다.
+          return JsonResponse(serializer.errors, status=400)
+      		# error를 JsonResponse 형태로 return 한다. 400번 에러
+          	# return은 Response 형태여야 한다.
+      
+  
+      elif request.method == 'DELETE':
+          obj.delete()
+          # 생성된 obj를 삭제한다.
+          return HttpResponse(status=204)
+  ```
+
+* ```python
+  @csrf_exempt
+  def login(request):
+      if request.method == 'POST':
+          # 요청한 method의 값이 POST라면,
+          data = JSONParser().parse(request)
+          # 파이썬 데이터 형식으로 요청을 파싱한다.
+          search_name = data['name']
+          # GET, PUT, DELETE는 하나의 객체를 선택해서 처리하는 로직
+          # 요청한 파싱한 데이터에서 name을 찾아낸다.
+          obj = Addresses.objects.get(name=search_name)
+          # name을 공통적으로 하나를 조회한다.
+          # url에 입력된 아이디를 찾아낸다.
+          # 이후 값을 obj에 저장한다.
+  
+          if data['phone_number'] == obj.phone_number:
+              # DB에서 폰 번호와 입력된 폰 번호가 같은게 있다면
+              return HttpResponse(status=200)
+          	# 성공
+          else:
+              return HttpResponse(status=400)
+          	# 아니라면 실패를 내려준다.
+  ```
+
+# Django에서 views.py와 urls.py 연결
+
+* ```python
+  from django.conf.urls import url, include
+  from testapp import views
+  from django.urls import path
+  # 최상위 project root에서 app 쪽으로 들어간 후, views에서 address_list 가져온다.
+  
+  
+  urlpatterns = [
+      path('gradproject/', views.address_list),
+      path('gradproject/<int:pk>/', views.address),
+      # views.address로 가는데 address에서는 def address(request, pk): 로 받는다.
+      # 그러므로 첫 번째 gradproject 두 번째는 pk로
+      path('login/', views.login),
+      path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+  ]
+  
+  # 실행하기 전 업데이트가 있었으므로
+  # python manage.py makemigrations
+  # python manage.py migrate
+  # 를 해준다.(하면 설치된 앱과 모델이 적용된다.)
+  
+  ```
+
+* 
+
+# Django에서 성공적인 접근일 때
+
+* client 요청이 성공적으로 수신, 이해 및 수락이 이루어 졌다면 상태 코드는 밑 내용와 같이 암시한다.
+
+  * ```http
+    HTTP_200_OK		  # 일반적으로 HTTP 요청이 성공했음을 의미한다.
+    HTTP_201_CREATED  # 새로운 리소스가 생성되었을 때
+    HTTP_202_ACCEPTED # 서버가 요청을 수락했지만 요청이 성공적으로 완료될 지는 아직 모르는 상태
+    HTTP_203_NON_AUTHORITATIVE_INFORMATION # HTTP 프록시가 사용할 수 있는 상태 코드
+    HTTP_204_NO_CONTENT # 요청이 성공한 경우, 서버에서 컨텐츠를 반환하지 않아야 한다. 하지만 응답 처리가 없다.
+    HTTP_205_RESET_CONTENT # 내용이 초기화 될 때, HTTP_204와 유사, HyperText 애플리케이션을 위한 것이다.
+    HTTP_206_PARTIAL_CONTENT # 범위 요청에서 사용, HTTP Client는 범위 요청을 사용하여 리소스의 일부만 요청할 수 있다.
+    HTTP_207_MULTI_STATUS	# WebDAV 서버에서 주로 사용된다.
+    HTTP_208_ALREADY_REPORTED # WebDAV 서버 전용 HTTP 상태 코드, 거의 사용되지 않는 WebDAV 확장으로 정의되기 때문에 더욱 불분명하다.
+    HTTP_226_IM_USED # HTTP 프로토콜의 특정 확장에서 사용된다. 확장을 통해 HTTP 서버는 클라이언트에 리소스의 변경사항을 전송할 수 있다.
+    ```
 
 
 
+## HTTP ERROR Code
 
+![http](https://user-images.githubusercontent.com/72541544/118401640-68d96680-b6a1-11eb-9aa3-9bc15f15f6e1.png)
+
+# Insomnia에서 사용법
+
+* PUT 예시
+  * ![put](https://user-images.githubusercontent.com/72541544/118401643-6971fd00-b6a1-11eb-9950-e6d819b75b6b.png)
+  * ~8000/project이름/테이블 번호/
+  * PUT하기 위해, 먼저 GET을 이용하여 내역들을 확인한 후
+  * MySQL_Workbench를 이용하여 테이블 번호를 확인한다.
+* POST 예시
+  * ![POST](https://user-images.githubusercontent.com/72541544/118401641-68d96680-b6a1-11eb-938e-309e4585828b.png)
+  * ~8000/project이름/ 
+  * 입력시 출력이 된다.
+  * 입력하기위해 테이블 name과 내용을 넣는다.
+* GET 예시
+  * ![get](https://user-images.githubusercontent.com/72541544/118401639-6840d000-b6a1-11eb-8ddb-571984afa7ca.png)
+  * ~8000/project이름/
+  * 입력시 이전까지 입력한 내용 확인 가능(삭제된 것은 제외)
+* DELETE 예시
+  * ![DELETE](https://user-images.githubusercontent.com/72541544/118401637-67a83980-b6a1-11eb-922b-b57eb64e8415.png)
+  * ~8000/project이름/테이블 번호
+  * 입력한 테이블 번호에 해당하는 테이블을 삭제한다.
+
+# MySQL_Workbench 에서
+
+* django에서 생성한 table을 확인할 때
+  * ![사진2](https://user-images.githubusercontent.com/72541544/118401645-6971fd00-b6a1-11eb-8734-faeee3007308.png)
+  * SELECT * FROM database이름.테이블 이름;
+
+
+
+###	Django에서 여러 app을 만들 때
+
+* urls.py에서 해당 app을 설정해주고, 사용하지 않는 app는 주석 처리 한다.
+
+
+
+# Django Android에서 로그인
+
+* views.py
+
+  ```python
+  # app 로그인
+  @csrf_exempt
+  def app_login(request):
+      if request.method == 'POST':
+          print("리퀘스트 로그" + str(request.body))
+          id = request.POST.get('userid', '')
+          pw = request.POST.get('userpw', '')
+          print("id = " + id + " pw = " + pw)
+  
+          result = authenticate(username=id, password=pw)
+  
+          if result:
+              print("로그인 성공!")
+              return JsonResponse({'code': '0000', 'msg': '로그인성공입니다.'}, status=200)
+  
+          else:
+              print("실패")
+              return JsonResponse({'code': '1001', 'msg': '로그인실패입니다.'}, status=200)
+  
+  ```
+
+* urls.py
+
+  * ```python
+    from test2 import views
+    from django.urls import path
+    from django.contrib import admin
+    from django.conf.urls import url, include
+    
+    # test2
+    urlpatterns = [
+        path('gradproject/', views.address_list),
+        path('gradproject/<int:pk>/', views.address),
+        # views.address로 가는데 address에서는 def address(request, pk): 로 받는다.
+        # 그러므로 첫 번째 gradproject 두 번째는 pk로
+        path('app_login/', views.app_login),
+        
+        path('admin/', admin.site.urls),
+        path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    ]
+    
+    ```
+
+
+
+# Django swagger
+
+* Django rest framework 프로젝트의 API에 대한 정보를 문서화
+
+* Swagger를 이용해 자동으로 문서화
+
+* Swagger : RESTful 서비스의 설계, 빌드, 문서화, 사용에 도움을 주는 툴
+
+* 설치
+
+  * ```python
+    - pip3 install django-rest-swagger
+    - settings.py에서
+    INSTALLED_APPS = [
+    	~
+    	'drf_yasg',
+    	'rest_framework',
+    	~
+    ]
+    
+    
+    REST_FRAMEWORK = {
+        'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+        'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+        'PAGE_SIZE': 10
+    }
+    
+    SITE_ID = 1
+    ```
+
+  * urls.py
+
+    ```python
+    from test2 import views
+    from rest_framework import routers
+    from django.urls import path
+    from django.contrib import admin
+    from rest_framework import permissions
+    from drf_yasg.views import get_schema_view
+    from drf_yasg import openapi
+    from django.conf.urls import url, include
+    
+    router = routers.DefaultRouter()
+    router.register(r'users', views.LoginViewSet)
+    
+    # swagger
+    schema_view = get_schema_view(
+        openapi.Info(
+            title="Swagger Study API",
+            default_version="v1",
+            description="Swagger Study를 위한 API 문서",
+            terms_of_service="https://www.google.com/policies/terms/",
+            contact=openapi.Contact(name="test", email="test@test.com"),
+            license=openapi.License(name="Test License"),
+        ),
+        public=True,
+        permission_classes=(permissions.AllowAny,),
+    )
+    
+    # test2
+    urlpatterns = [
+    
+        path('admin/', admin.site.urls),
+        url(r'^swagger(?P<format>\.json|\.yaml)$',
+            schema_view.without_ui(cache_timeout=0), name='schema-json'),
+        url(r'^swagger/$', schema_view.with_ui('swagger',
+            cache_timeout=0), name='schema-swagger-ui'),
+        url(r'^redoc/$', schema_view.with_ui('redoc',
+                                             cache_timeout=0), name='schema-redoc'),
+    
+    
+        path('app_login/', views.app_login),
+        path('gradproject/', views.address_list),
+        path('gradproject/<int:pk>/', views.address),
+        # views.address로 가는데 address에서는 def address(request, pk): 로 받는다.
+        # 그러므로 첫 번째 gradproject 두 번째는 pk로
+        path('', include(router.urls)),
+        path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    ]
+    
+    ```
+
+  *
+
+
+
+주소 : https://bum752.github.io/posts/django-api-document/
+
+사진 주소  : https://articles09.tistory.com/5?category=708596
+
+사진 주소 : https://youtu.be/KRJRD2Kkf8w
 
 [참고 자료] : https://jong-seok-ap.tistory.com/32
 
