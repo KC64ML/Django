@@ -1098,7 +1098,7 @@ python manage.py runserver
 
 * 설치
 
-  * ```tex
+  * ```python
     - pip3 install django-rest-swagger
     - settings.py에서
     INSTALLED_APPS = [
