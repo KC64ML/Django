@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'drf_yasg',
     'rest_framework',
+    'sslserver',
     'test2',
 ]
 

@@ -63,7 +63,7 @@ urlpatterns = [
                                          cache_timeout=0), name='schema-redoc'),
 
 
-    path('app_login/', views.app_login),
+    path('app_login/', views.LoginViewSet),
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
