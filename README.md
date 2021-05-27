@@ -851,6 +851,32 @@ python manage.py runserver
   * ![error](https://user-images.githubusercontent.com/72541544/118401638-67a83980-b6a1-11eb-9176-19be37fbee57.png)
   * 위와 같은 에러일 때는 빨간색 보이는가, 뒤에 //를 잘못 달아서 생긴 오류이다.
 
+![에러](D:\Computer_Science\Study\Django\Django\write\Day 8\사진2\에러.png)
+
+![에러2](D:\Computer_Science\Study\Django\Django\write\Day 8\사진2\에러2.png)
+
+* ```tex
+  ~ in contribute_to_class raise TypeError("class Meta" got invalid attribute(s): %s"% ','.join(meta_attrs))
+  TypeError : 'class Meta' got invalid attribute(s): constraints
+  ```
+
+* ```tex
+  ~
+  return database_name = ':memory:' or 'mode=memory' in database_name
+  TypeError: argument of type 'WindowPath' is not iterable
+  ```
+
+  * TypeError : 'class Meta' got invalid attribute(s): constraints와
+  * TypeError: argument of type 'WindowPath' is not iterable가 발생하였을 때
+    * 이는 다른 상위버전 패키지랑 호환이 안되어 발생한 문제이다.
+    * 장고를 최신버전으로 재설치 한다.
+
+* pip freeze : 설치된 패키지 버전을 확인한 후
+
+* python -m pip install -U Django
+
+  * 장고가 최신버전으로 재설치된다.
+
 
 
 # Django에서 views.py (CRUD)
