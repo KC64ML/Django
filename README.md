@@ -851,6 +851,32 @@ python manage.py runserver
   * ![error](https://user-images.githubusercontent.com/72541544/118401638-67a83980-b6a1-11eb-9176-19be37fbee57.png)
   * 위와 같은 에러일 때는 빨간색 보이는가, 뒤에 //를 잘못 달아서 생긴 오류이다.
 
+### 패키지 호환 Error
+* ![에러](https://user-images.githubusercontent.com/72541544/119762494-c9aa3f80-bee8-11eb-897e-5c37de161688.png)
+* ![에러2](https://user-images.githubusercontent.com/72541544/119762497-ca42d600-bee8-11eb-8363-9248334b5eff.png)
+
+* ```tex
+  ~ in contribute_to_class raise TypeError("class Meta" got invalid attribute(s): %s"% ','.join(meta_attrs))
+  TypeError : 'class Meta' got invalid attribute(s): constraints
+  ```
+
+* ```tex
+  ~
+  return database_name = ':memory:' or 'mode=memory' in database_name
+  TypeError: argument of type 'WindowPath' is not iterable
+  ```
+
+  * TypeError : 'class Meta' got invalid attribute(s): constraints와
+  * TypeError: argument of type 'WindowPath' is not iterable가 발생하였을 때
+    * 이는 다른 상위버전 패키지랑 호환이 안되어 발생한 문제이다.
+    * 장고를 최신버전으로 재설치 한다.
+
+* pip freeze : 설치된 패키지 버전을 확인한 후
+
+* python -m pip install -U Django
+
+  * 장고가 최신버전으로 재설치된다.
+
 
 
 # Django에서 views.py (CRUD)
@@ -1170,7 +1196,101 @@ python manage.py runserver
     
     ```
 
-  *
+### 설치된 패키지 버전을 확인할 때
+* venv나 conda로 독립환경 만들기
+* ```tex
+  pip freeze > requirements.txt
+  - 설치된 패키지 버전 확인하기
+  ```
+* ![설치된 패키지](https://user-images.githubusercontent.com/72541544/119763141-eb57f680-bee9-11eb-866e-3d5aa2fc5bcb.png)
+
+
+# Http, json
+
+* Django에서는 request와 response 객체로 상태를 서버와 클라이언트가 주고 받는다.
+
+  * djanog http 모듈에서 HttpRequest와 HttpResponse API를 제공
+  * 서버-클라이언트 통신시
+    * 특정 페이지가 요청되면, 장고는 요청 시 메타데이터를 포함하는 HttpRequest 객체를 생성
+    * 장고는 urls.py에서 정의한 특정 View 클래스/함수에 첫 번째 인자로 해당 객체(request)를 전달
+    * 해당 View는 결과 값을 HttpResponse 혹은 JsonResponse 객체에 담아 전달
+
+* HttpRequest
+
+  * 주요 속성(Attribute)
+
+  * ```http
+    HttpRequest.body  # request의 body 객체
+    HttpRequest.headers # request의 headers 객체
+    HttpRequest.COOKIES # 모든 쿠키를 담고 있는 딕셔너리 객체
+    HttpRequest.method # reqeust의 메소드 타입
+    HttpRequest.GET # GET 파라미터를 담고 있는 딕셔너리 같은 객체
+    HTTpRequest.POST # POST 파라미터를 담고 있는 딕셔너리 같은 객체
+    ```
+
+* HttpResponse(data, content_type)
+
+  * response을 반환하는 가장 기본적인 함수
+
+  * 주로 html를 반환
+
+  * ```python
+    # string 전달하기
+    HttpResponse("Here's the text of the Web page.")
+    ```
+
+* HttpResponseRedirect(url)
+
+  * response를 하지 않고, 지정된 url페이지로 redicrect를 한다.
+  * 첫 번째 인자로 url 지정, 경로는 절대경로 혹은 상대경로를 이용할 수 있다.
+
+* Render
+
+  ```python
+  render(request(필수), template_name(필수), 
+        context=None, content_type=None, 
+        status=None, using=None)
+  ```
+
+  * `render`는 `httpRespose` 객체를 반환하는 함수로 template을 context와 엮어 `httpResponse`로 쉽게 반환해 주는 함수임
+  * template_name에는 불러오고 싶은 템플릿명을 적음
+  * context에는 View에서 사용하던 변수(dictionary 자료형)를 html 템플릿에서 전달하는 역할을 함. key 값이 템플릿에서 사용할 변수이름, value값이 파이썬 변수가 됨
+
+* JsonResponse
+
+  * ```python
+    JsonResponse(data, encoder=DjangoJSONEncoder,
+                 safe=True, json_dumps_params=None, 
+                 **kwargs)
+    ```
+
+    * `HttpResponse`의 subclass로, JSON-encoded response를 생성할수 있게 해 줌. 대부분의 기능은 superclass에서 상속받음
+    * 첫번째 인자로는 전달할 데이터로서 반드시 dictionary 객체여야 함.
+    * encoder는 데이터를 [serialize](https://docs.djangoproject.com/en/3.0/topics/serialization/#serialization-formats-json)할 때 이용된다.
+    * response를 커스터마이징 하여 전달하고 싶을 때, http status code에 더하여 메세지를 입력해서 전달할 수 있다.
+    * 프론트엔드 개발자와 협의하여 약속된 메세지를 던진다.
+    * 전달할 메세지가 없고 status code만 전달한다면 HttpResponse를 사용한다.
+
+
+# JWT(Json Web Tokenization)
+
+* Stateless 서버
+  * token 기반 인증 시스템
+  * 유저의 상태 정보를 저장하지 않고 클라이언트 측에서 들어오는 요청만으로 작업을 수행
+  * 유저 정보를 확인하고 그에 맞는 적절한 권한을 부여할 때 '토큰'을 사용한다.
+  * 서버에서 토큰을 클라이언트에 전달하면, 클라이언트는 이를 저장해두고 요청을 할 때 해당 토큰을 함께 보낸다.
+* Stateful 서버
+  * 클라이언트에서 요청을 받을 때마다 클라이언트의 상태를 계속 유지하고, 서비스를 제공할 때 항상 참고
+* Example
+  * User가 id와 password를 입력하고 로그인 한다.
+  * login 성공하면 서버내에 session을 만들게 되고 세션 id, user id, password, 권한 등의 정보가 들어 있다.
+  * 서버는 session 아이디인 쿠키(cookie)를 클라이언트에 보내고 클라이언트가 무언가 요청을 할 때마다 이 쿠키를 서버에 보내 서버가 확인한다.
+  * 서버는 쿠키에 담긴 세션 id를 찾고, 유효시간 및 권한을 확인하여 요청에 맞는 특정 웹페이지를 보여준다.
+  * ![참고자료](https://user-images.githubusercontent.com/72541544/119763515-a2ed0880-beea-11eb-9b38-8bee5c40d387.png)
+
+ 
+ 
+ 
 
 
 
@@ -1179,6 +1299,10 @@ python manage.py runserver
 사진 주소  : https://articles09.tistory.com/5?category=708596
 
 사진 주소 : https://youtu.be/KRJRD2Kkf8w
+ 
+[참고 자료] : https://moondol-ai.tistory.com/173?category=865999 
+ 
+[참고 자료] : https://velog.io/@jcinsh/Django-request-response
 
 [참고 자료] : https://jong-seok-ap.tistory.com/32
 
