@@ -879,30 +879,6 @@ python manage.py runserver
 
 
 
-* ```tex
-  ~ in contribute_to_class raise TypeError("class Meta" got invalid attribute(s): %s"% ','.join(meta_attrs))
-  TypeError : 'class Meta' got invalid attribute(s): constraints
-  ```
-
-* ```tex
-  ~
-  return database_name = ':memory:' or 'mode=memory' in database_name
-  TypeError: argument of type 'WindowPath' is not iterable
-  ```
-
-  * TypeError : 'class Meta' got invalid attribute(s): constraints와
-  * TypeError: argument of type 'WindowPath' is not iterable가 발생하였을 때
-    * 이는 다른 상위버전 패키지랑 호환이 안되어 발생한 문제이다.
-    * 장고를 최신버전으로 재설치 한다.
-
-* pip freeze : 설치된 패키지 버전을 확인한 후
-
-* python -m pip install -U Django
-
-  * 장고가 최신버전으로 재설치된다.
-
-
-
 # Django에서 views.py (CRUD)
 
 * ```python
