@@ -1196,7 +1196,18 @@ python manage.py runserver
     
     ```
 
-  *
+  ### 설치된 패키지 버전을 확인할 때
+* venv나 conda로 독립환경 만들기
+* ```tex
+  pip freeze > requirements.txt
+  - 설치된 패키지 버전 확인하기
+  ```
+* ![설치된 패키지](https://user-images.githubusercontent.com/72541544/119763141-eb57f680-bee9-11eb-866e-3d5aa2fc5bcb.png)
+
+
+ 
+ 
+ 
 
 
 
