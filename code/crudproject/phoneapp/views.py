@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from phoneapp.seralizer import UserSerializer, GroupSerializer
+from phoneapp import UserSerializer, GroupSerializer
 
 # project 경로 설정할 필요 없다.
 
