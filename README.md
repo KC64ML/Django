@@ -877,6 +877,21 @@ python manage.py runserver
 
   * 장고가 최신버전으로 재설치된다.
 
+### 회원가입, 로그인에서 Error
+# Error
+
+* django.db.migrations.exceptions.InconsistentMigrationHistory:
+* Prgramming Error
+  * ![migrate 오류](https://user-images.githubusercontent.com/72541544/120098209-83b2dd00-c16f-11eb-95a5-2643cb347f9c.png)
+  * ![Programming Error](https://user-images.githubusercontent.com/72541544/120098212-84e40a00-c16f-11eb-8544-e4ac3b58f3b4.png)
+  * 만약, 위와 같은 'IncosistentMigrationHistory, gdapp.0001_initial on database 'default''가 나온다면
+  * 이는, 현재 Mysql Workbench에서 생성한 database와 mysql에서 생성된 database가 연결하는데 있어 문제가 있는 것이다.
+  * 그럼에 mysql에 접속하여 해당 table을 제거한 후
+  * ![drop](https://user-images.githubusercontent.com/72541544/120098206-8281b000-c16f-11eb-87d8-c5c2667b457c.png)
+  * Mysql Workbench에서 forward engineer을 해준다.
+  * 이제 django로 돌아와서 makemigrations, migrate를 해준다.
+
+
 
 
 # Django에서 views.py (CRUD)
