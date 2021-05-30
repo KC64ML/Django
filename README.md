@@ -878,8 +878,6 @@ python manage.py runserver
   * 장고가 최신버전으로 재설치된다.
 
 ### 회원가입, 로그인에서 Error
-# Error
-
 * django.db.migrations.exceptions.InconsistentMigrationHistory:
 * Prgramming Error
   * ![migrate 오류](https://user-images.githubusercontent.com/72541544/120098209-83b2dd00-c16f-11eb-95a5-2643cb347f9c.png)
